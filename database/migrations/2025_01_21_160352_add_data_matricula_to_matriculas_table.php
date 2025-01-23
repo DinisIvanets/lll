@@ -11,9 +11,11 @@ class AddDataMatriculaToMatriculasTable extends Migration
      */
     public function up()
     {
-        Schema::table('matriculas', function (Blueprint $table) {
-            $table->date('data_matricula')->default('2023-01-01'); // Provide a default value
-        });
+        if (!Schema::hasColumn('matriculas', 'data_matricula')) {
+            Schema::table('matriculas', function (Blueprint $table) {
+                $table->date('data_matricula')->default('2023-01-01'); // Adiciona a coluna data_matricula
+            });
+        }
     }
 
     /**

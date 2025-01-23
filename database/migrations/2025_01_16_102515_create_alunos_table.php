@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('alunos', function (Blueprint $table) {
-            $table->id('student_id'); // Chave primária
+            $table->id(); // Chave primária padrão (coluna `id`)
             $table->string('student_name'); // Nome do aluno
             $table->integer('student_age'); // Idade do aluno
             $table->timestamps(); // Campos de criação e atualização

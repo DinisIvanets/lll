@@ -11,9 +11,11 @@ class AddDuracaoToCursosTable extends Migration
      */
     public function up()
     {
-        Schema::table('cursos', function (Blueprint $table) {
-            $table->integer('duracao'); // Add the duracao column
-        });
+        if (!Schema::hasColumn('cursos', 'duracao')) {
+            Schema::table('cursos', function (Blueprint $table) {
+                $table->integer('duracao'); // Adiciona a coluna duracao
+            });
+        }
     }
 
     /**

@@ -2,25 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Curso extends Model
 {
-    protected $fillable = ['nome', 'descricao', 'duracao'];
+    use HasFactory; // Adicione esta linha
 
-    /**
-     * Relacionamento com a tabela Matriculas.
-     */
-    public function matriculas()
-    {
-        return $this->hasMany(Matricula::class);
-    }
-
-    /**
-     * Relacionamento muitos para muitos com a tabela Alunos através de Matriculas.
-     */
-    public function alunos()
-    {
-        return $this->belongsToMany(Aluno::class, 'matriculas');
-    }
-}   
+    protected $table = 'cursos'; // Nome da tabela no banco de dados
+    protected $fillable = ['nome', 'descricao', 'duracao']; // Colunas que podem ser preenchidas em massa
+}
